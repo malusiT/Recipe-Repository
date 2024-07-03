@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Recipe Repository</title>
+</head>
+<header>
+    <h1 id="title">Recipe Repository</h1>
+    <p id="tagline"><span>Where Your Recipes Find a Home</span></p>
+</header>
+<body class="body-container">
+    <div class="recipes-container">
+        <section class="recipe-list" id="my-recipes-container">
+            <h2>My Recipes</h2>
+                <div data-list="1" class="recipe" id="recipe-display">
+                    <div id="recipe-contols">
+                        <h3 id="recipe-title">SIMPLE VANILLA CUPCAKES</h3>
+                        <div id="recipe-function">
+                            <button id="edit-button">Edit</button>
+                            <button id="delete-btn">Delete</button>
+                            <button id="show-btn">Show Recipe</button>
+                        </div>  
+                    </div>
+                            <div id="recipe-info" class="hidden">
+                                <h4>Description</h4>
+                                <p id="description">"Easy and simple but can be made individual with a slight twist or a special icing. For a nice twist, can add frozen fruit just before it goes into the oven and it will burst into flavor and color."</p>
+                                <h4>Ingredients</h4>
+                                <ul id="ingredients-list">
+                                    <li class="list">2 cups flour</li>
+                                    <li class="list">1⁄2 teaspoon salt</li>
+                                    <li class="list">2 teaspoons baking powder</li>
+                                    <li class="list">1⁄2 cup butter, softened</li>
+                                    <li class="list">3⁄4 cup sugar (if you like your cupcakes very friggen' sweet, add a little more.)</li>
+                                    <li class="list">2 eggs</li>
+                                    <li class="list">1 cup milk</li>
+                                    <li class="list">1 teaspoon vanilla essence (optional)</li>
+                                </ul>
+                                <h4>Instructions</h4>
+                                <ol id="instructions-list">
+                                    <li class="list">Preheat oven to 375f or 190c; line muffin cups with papers</li>
+                                    <li class="list">Cream butter and sugar till light and fluffy (make sure the butter is room temp so the mixture doesn't clump). Beat in eggs one at a time.</li>
+                                    <li class="list">Add flour (mixed with baking powder and salt) alternating with milk beat well; stir in vanilla.</li>
+                                    <li class="list">Divide evenly among pans and bake for 18 minutes. Let cool in pans and enjoy! :).</li>
+                                </ol>
+                            </div>
+                </div>
+        </section>
+            
+        <section id="add-new-recipes">
+            <button id="add-recipe-btn">Add new Recipe</button>
+            <div id="recipe-form-container">
+                <form class="recipe-form hidden" id="form-id">
+                    <label>Title</label>
+                    <input type="text" id="title-input" placeholder="Recipe Name"><br>
+                    <label>Description</label>
+                    <input type="text" id="recipe-description-input" placeholder="Recipe description"><br>
+                    <label>Ingredients</label>
+                    <textarea name="ingredients-list" id="ingredients" cols="30" rows="10" placeholder="List of Ingredients [reminder to include measurements]"></textarea>
+                    <label>Instructions</label>
+                    <textarea name="recipe-instruction" id="instructions" width="1000px" cols="100" height="500px" rows="20"></textarea><br>
+                    <label>Preptime</label>
+                    <input type="text" id="prep-time" name="prep-time" placeholder="e.g., 1 hour 30 minutes"><br>
+                    <div id="error-message" class="error-message" style="color:red"></div>
+                    <input type="submit" value="Add Recipe" id="add-recipe" >
+                </form>
+            </div>
+        </section>
+    </div>
+    <script src="js/script.js"></script>
+    <script src="js/recipes.js"></script>
+</body>
+</html>
