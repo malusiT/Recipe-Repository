@@ -26,22 +26,10 @@ header p {
     text-transform: uppercase;
     letter-spacing: 4px;
     overflow: hidden;
-    background: linear-gradient(90deg, #000, #fff, #000);
-    background-repeat: no-repeat;
-    animation: animate 3s linear infinite;
-    background-clip: border-box;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: rgba(255, 255, 255, 0);
+    color: linear-gradient( #000, #fff, #000);
+  
 }
 
-@keyframes animate {
-    0% {
-        background-position: -500%;
-    }
-    100% {
-        background-position: 500%;
-    }
-}
 
 body h2{
     text-align: center;
@@ -81,4 +69,8 @@ section form label{
 
 form input{
     line-height: 3em;
+}
+#add-recipe{
+    padding: 20px;
+    margin: 10px;
 }
