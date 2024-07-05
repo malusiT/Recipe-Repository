@@ -1,4 +1,4 @@
-const addRecipe = document.getElementById("add-recipe-btn"); // Add Recipe Button
+const addRecipe = document.getElementById("openModalBtn"); // Add Recipe Button
 const showBtn = document.getElementById("form-id"); // Form Container
 
 const showRecipeBtn = document.getElementById("show-btn"); // Show Recipe Button
@@ -6,7 +6,36 @@ const recipeInfo = document.getElementById("recipe-info"); // Recipe Info Div
 console.log(showRecipeBtn);
 console.log(recipeInfo);
 
-const div1 = document.getElementById("recipe-display"); // Recipe Display Div
+const div1 = document.getElementById("recipe-display"); // Recipe Display Div\
+
+//Mo
+// Get the modal
+const modal = document.getElementById("modal");
+
+// Get the button that opens the modal
+const btn = document.getElementById("openModalBtn");
+
+// Get the <span> element that closes the modal
+const span = document.getElementById("closeModalBtn");
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+console.log("Hello")
 
 // Toggle Recipe Info Visibility on Show Recipe Button Click
 showRecipeBtn.addEventListener("click", () => {
