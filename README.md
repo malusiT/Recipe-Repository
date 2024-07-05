@@ -1,6 +1,6 @@
 # Recipe Repository
 
-Welcome to Recipe Repository, a web application for managing and sharing your favorite recipes.
+Welcome to Recipe Repository, a web application for storing, managing and sharing your personal favorite recipes.
 
 ## Features
 
@@ -17,7 +17,7 @@ To run the project locally:
    git clone https://github.com/malusiT/recipe-repository.git
 2. Open index.html in your web browser.
 ## Usage
-- Click on a recipe title to expand and view its details.
+- Click on the provided button to expand and view the recipe details.
 - Use the Add New Recipe button to input a new recipe.
 - Edit or delete recipes using the provided buttons.
 
@@ -34,5 +34,5 @@ Contributions are welcome! If you have suggestions for new features or find any 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 # Roadmap
-- Implement image upload support for recipes.
+- Implement image upload support for recipes.   
 - Add user authentication and authorization features.
