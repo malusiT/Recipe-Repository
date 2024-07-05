@@ -10,17 +10,17 @@ const div1 = document.getElementById("recipe-display"); // Recipe Display Div
 
 // Toggle Recipe Info Visibility on Show Recipe Button Click
 showRecipeBtn.addEventListener("click", () => {
-    console.log(recipeInfo);
     recipeInfo.classList.toggle("hidden");
 });
 
 // Toggle Add Recipe Form Visibility on Add Recipe Button Click
 addRecipe.addEventListener("click", () => {
     showBtn.classList.toggle("hidden");
-    addRecipe.classList.toggle("hidden")
-    
-    if(showBtn.classList.contains("hidden")){
-        addRecipe.classList.toggle("hidden")
+    addRecipe.classList.toggle("hidden");
+
+    // Ensure the Add Recipe Button is visible when the form is hidden
+    if (showBtn.classList.contains("hidden")) {
+        addRecipe.classList.toggle("hidden");
     }
 });
 
@@ -70,7 +70,7 @@ function show() {
     div2.classList.add("recipe");
     div1.append(div2);
 
-    recipes.forEach((item, index) => {
+    recipes.forEach((item) => {
         div2.innerHTML = `
             <div id="recipe-controls">
                 <h3 id="recipe-title">${item.title}</h3>
@@ -80,19 +80,24 @@ function show() {
                     <button id="show-btn">Show Recipe</button>
                 </div>  
             </div>
-            <div id="recipe-info">
+            <div id="recipe-info" class="hidden">
                 <h4>Ingredients</h4>
                 <ul id="ingredients-list">
-                    <li> ${item.ingredients[index + 1]} </li>
+                    ${item.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
                 </ul>
                 <h4>Instructions</h4>
                 <ol id="instructions-list">
-                    <li class="list">Preheat oven to 375f or 190c; line muffin cups with papers</li>
-                    <li class="list">Cream butter and sugar till light and fluffy (make sure the butter is room temp so the mixture doesn't clump). Beat in eggs one at a time.</li>
-                    <li class="list">Add flour (mixed with baking powder and salt) alternating with milk beat well; stir in vanilla.</li>
-                    <li class="list">Divide evenly among pans and bake for 18 minutes. Let cool in pans and enjoy! :).</li>
+                    ${item.instructions.map(instruction => `<li>${instruction}</li>`).join('')}
                 </ol>
             </div>` 
+
+        const showRecipeBtn = div2.querySelector("#show-btn");
+        const recipeInfoDiv = div2.querySelector("#recipe-info");
+
+        // Toggle Recipe Info Visibility on Show Recipe Button Click for Each Recipe
+        showRecipeBtn.addEventListener("click", () => {
+            recipeInfoDiv.classList.toggle("hidden");
+        });
     });
 }
 
