@@ -171,7 +171,7 @@ footer {
     margin: 1% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 50%; /* Could be more or less, depending on screen size */
+    width: 70%; /* Could be more or less, depending on screen size */
 }
 
 .close-btn {
@@ -201,6 +201,6 @@ footer {
     }
     .modal-content{
         margin-top: 5px auto;
-        width: 100%;
+        width: 90%;
     }
 }
