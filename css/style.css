@@ -53,6 +53,13 @@ h3{
     font-weight: 600;
     font-size: medium;
 }
+
+ol li{
+    font-family: system-ui,'Segoe UI','Open Sans', 'Helvetica Neue';
+}
+ul li{
+    font-family: system-ui, 'Segoe UI','Open Sans', 'Helvetica Neue', sans-serif;
+}
 button{
     border-style: none;
     min-width: 70px;
@@ -93,15 +100,25 @@ form input{
     line-height: 3em;
 }
 #add-recipe{
-    padding: 20px;
+    padding: 2 0px;
     margin: 10px;
+    text-align: center;
+}
+/* Main content should take up all available space */
+#recipe-display {
+    flex: 1;
 }
 
-/* modal style
+/* Footer styles */
+footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    width: 100%;
+}
 
-
-
-*/
+/* modal style */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -116,11 +133,12 @@ form input{
 }
 
 .modal-content {
+    border-radius: 8px;
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 1% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 50%; /* Could be more or less, depending on screen size */
 }
 
 .close-btn {
