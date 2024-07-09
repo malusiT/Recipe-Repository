@@ -95,12 +95,43 @@ section form label{
     color: #180803fa;
     padding: 5px;
 }
+form label{
+    font-family: system-ui,'Segoe UI','Open-sans';
+}
 
 form input{
     line-height: 3em;
+    background-color: #d3cccc;
+    color: #131212;
+    border: 1px double #fff;
+    border-radius: 5px;
+    padding-left: 10px;
+    text-align: left;
+    font-family: system-ui,'Segoe UI','Open Sans';
+    font-weight: 700;
+    text-transform: capitalize;
+}
+    
+form textarea{
+    background-color: #d3cccc;
+    color: #131212;
+    font-weight: 700;
+    border: 1px double #fff;
+    border-radius: 5px;
+    padding-left: 10px;
+    text-align: left;
+    font-family: system-ui,'Segoe UI','Open Sans';
+    padding: 20px;
+}
+form input[type='submit']{
+    font-weight: 700;
+}
+form input[type='submit']:focus{
+    background-color: #242323;
+    color: #fefefe;
 }
 #add-recipe{
-    padding: 2 0px;
+    padding: 20px;
     margin: 10px;
     text-align: center;
 }
