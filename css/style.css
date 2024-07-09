@@ -200,7 +200,7 @@ footer {
         place-items: center;
     }
     .modal-content{
-        margin-top: 5px;
-        width: 90%;
+        margin-top: 5px auto;
+        width: 70%;
     }
 }
