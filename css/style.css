@@ -29,8 +29,9 @@ header p {
     color: linear-gradient( #000, #fff, #000);
   
 }
-
-
+.wrapper{
+    flex: 1;
+}
 body h2{
     text-align: center;
     text-transform: uppercase;
@@ -147,6 +148,7 @@ footer {
     padding: 10px 0;
     position: relative;
     width: 100%;
+
 }
 
 /* modal style */
@@ -184,4 +186,17 @@ footer {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+@media (max-width: 700px) {
+    header{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* padding: 10px; */
+    }
+    section{
+        display: grid;
+        place-items: center;
+    }
 }
