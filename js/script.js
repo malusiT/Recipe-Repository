@@ -183,3 +183,12 @@ div.addEventListener("click", (event) => {
     }
     // Implement edit and delete functionality here
 });
+
+const submitBtn = document.querySelector("#add-recipe");
+
+submitBtn.addEventListener("click", (event) =>{
+    // event.preventDefault();
+    const recipeTitle = document.querySelector("#title-input");
+    console.log(recipeTitle.value);
+})
+

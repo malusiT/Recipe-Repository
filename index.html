@@ -25,25 +25,25 @@
             <div id="modal" class="modal">
                 <div class="modal-content">
                 <span class="close-btn" id="closeModalBtn">&times;</span>
-                <form class="recipe-form hidden" id="form-id">
+                <div class="recipe-form hidden" id="form-id">
                     <label>Title</label>
-                    <input type="text" id="title-input" placeholder="Recipe Name"><br>
+                    <input type="text" id="title-input" placeholder="Recipe Name" required><br>
                     <label>Description</label>
-                    <input type="text" id="recipe-description-input" placeholder="Recipe description"><br>
+                    <input type="text" id="recipe-description-input" placeholder="Recipe description" required><br>
                     <label>Ingredients</label>
-                    <textarea name="ingredients-list" id="ingredients" cols="30" rows="10" placeholder="List of Ingredients [reminder to include measurements]"></textarea>
+                    <textarea name="ingredients-list" id="ingredients" cols="30" rows="10" placeholder="List of Ingredients [reminder to include measurements]" required></textarea>
                     <label>Instructions</label>
-                    <textarea name="recipe-instruction" id="instructions" width="1000px" cols="100" height="500px" rows="20"></textarea><br>
+                    <textarea name="recipe-instruction" id="instructions" width="1000px" cols="100" height="500px" rows="20" required></textarea><br>
                     <label>Preptime</label>
-                    <input type="text" id="prep-time" name="prep-time" placeholder="e.g. 1 hour 30 minutes"><br>
+                    <input type="text" id="prep-time" name="prep-time" placeholder="e.g. 1 hour 30 minutes" required><br>
                     <div id="error-message" class="error-message" style="color:red"></div>
-                    <input type="submit" value="Add Recipe" id="add-recipe" >
-                </form>
+                    <button id="add-recipe">Add new Recipe</button>
+                </div>
             </div>
         </section>
     </div>
     <footer>
-        <p>&copy; 2024 Recipe Repository. All rights reserved.</p>
+        <p style="color: #fff;">&copy; 2024 Recipe Repository. All rights reserved.</p>
     </footer>
     <script src="js/script.js"></script> <!--  for toggling the buttons -->
 </body>

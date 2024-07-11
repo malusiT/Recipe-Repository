@@ -1,13 +1,21 @@
-header{
+header {
+    min-width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: #ffffff;
+    background-color: #ffffff; /* White background color */
+    background: url("../img/StockCake-Organized\ Refrigerator\ Contents_1720699601.jpg") center center no-repeat, #ffffff; /* Fallback to white if image fails to load */
+    background-size: cover,contain; /* Applies contain first, then cover */
+    border-bottom-left-radius: 1px;
+    border-bottom-right-radius: 1px;
+    border-bottom: double #fff;
 }
+
 body {
-    min-width: 100vw;
-    min-height: 100vh; /* Ensure the body takes the full height of the viewport */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     margin: 0;
     padding: 0;
     background: #ffffff;
@@ -17,12 +25,12 @@ header h1{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 40px;
     font-weight: 1000;
-    color: #000000;
+    color: #ffffff;
 }
 header p {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 600;
-    color: #000;
+    color: #ffffff;
     text-transform: uppercase;
     letter-spacing: 4px;
     overflow: hidden;
@@ -85,22 +93,22 @@ button:hover{
     min-width: 100vw;
     overflow: hidden;
 } 
-section form{
+section #form-id{
     display: flex;
     flex-direction: column;
     font-weight: 700;
 }
-section form label{
+section #form-id label{
     font-weight: 1000;
     font-size: 20px;
     color: #180803fa;
     padding: 5px;
 }
-form label{
+#form-id label{
     font-family: system-ui,'Segoe UI','Open-sans';
 }
 
-form input{
+#form-id input{
     line-height: 3em;
     background-color: #d3cccc;
     color: #131212;
@@ -113,7 +121,7 @@ form input{
     text-transform: capitalize;
 }
     
-form textarea{
+#form-id textarea{
     background-color: #d3cccc;
     color: #131212;
     font-weight: 700;
@@ -124,10 +132,10 @@ form textarea{
     font-family: system-ui,'Segoe UI','Open Sans';
     padding: 20px;
 }
-form input[type='submit']{
+#form-id input[type='submit']{
     font-weight: 700;
 }
-form input[type='submit']:focus{
+#form-id input[type='submit']:focus{
     background-color: #242323;
     color: #fefefe;
 }
@@ -142,13 +150,19 @@ form input[type='submit']:focus{
 }
 
 /* Footer styles */
+body > .body-container {
+    flex: 1;
+}
+
 footer {
     background-color: #f1f1f1;
+    background-image: url("../img/360_F_292203735_CSsyqyS6A4Z9Czd4Msf7qZEhoxjpzZl1.jpg");
+    background-position: auto 50px;
     text-align: center;
     padding: 10px 0;
-    position: relative;
     width: 100%;
-
+    position: relative;
+    bottom: 1;
 }
 
 /* modal style */
@@ -163,7 +177,6 @@ footer {
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
 
 .modal-content {
     border-radius: 8px;
@@ -171,11 +184,14 @@ footer {
     margin: 1% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 70%; /* Could be more or less, depending on screen size */
+    width: 50%; /* Could be more or less, depending on screen size */
+    background: url("../img/StockCake-Dewy\ Mango\ Portrait_1720701236.jpg") center center no-repeat, #ffffff; /* Fallback to white if image fails to load */
+    background-position: 100%,100%
+}
 }
 
 .close-btn {
-    color: #aaa;
+    color: linear-gradient(to right, #FFD700, #FFA500, #FF8C00, #FF7F50);;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -183,7 +199,7 @@ footer {
 
 .close-btn:hover,
 .close-btn:focus {
-    color: black;
+    color: #000;
     text-decoration: none;
     cursor: pointer;
 }
@@ -193,7 +209,6 @@ footer {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        /* padding: 10px; */
     }
     section{
         display: grid;
