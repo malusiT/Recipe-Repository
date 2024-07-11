@@ -195,6 +195,14 @@ div.addEventListener("click", (event) => {
 
 const submitBtn = document.querySelector("#add-recipe");
 
+function clearInputs(){
+    document.querySelector("#title-input").value ="";
+    document.querySelector("#recipe-description-input").value = "";
+    document.querySelector("#ingredients").value = "";
+    document.querySelector("#instructions").value= "";
+    document.querySelector("#prep-time").value = "";
+}
+
 submitBtn.addEventListener("click", () =>{
     // event.preventDefault();
     const recipeTitle = document.querySelector("#title-input").value;
@@ -220,9 +228,11 @@ submitBtn.addEventListener("click", () =>{
     }
     recipes.push(newRecipe)
     displayRecipes(recipes)
+    clearInputs()
     modal.style.display = "none";
     showBtn.classList.toggle("hidden");
     addRecipe.classList.toggle("hidden");
     }
+
 }) 
 
