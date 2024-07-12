@@ -82,7 +82,8 @@ const recipes = [
             "Season with salt and freshly ground black pepper to taste.",
             "Stir in the chopped parsley.",
             "Serve immediately, topped with grated Parmesan cheese if desired."
-        ]
+        ],
+        preptime: "45 minutes"
     },
     {
         title: "Simple Chakli (or Chakri)",
@@ -110,7 +111,8 @@ const recipes = [
             "Drain and Cool: Remove the fried chaklis with a slotted spoon and drain on paper towels to remove excess oil. Allow them to cool completely.",
             "Store: Once cooled, store the chaklis in an airtight container to maintain their crispness.",
             "Enjoy!",
-        ]
+        ],
+        preptime: "1 hour"
     },
     {
         title: "SIMPLE VANILLA CUPCAKES",
@@ -130,7 +132,8 @@ const recipes = [
             "Beat in eggs one at a time.",
             "Add flour (mixed with baking powder and salt) alternating with milk beat well; stir in vanilla.",
             "Divide evenly among pans and bake for 18 minutes. Let cool in pans and enjoy! :).",
-        ]
+        ],
+        preptime: "1 hour 30 minutes"
     }
 ];
 
@@ -159,6 +162,10 @@ const displayRecipes = (recipes) => {
                 <ol class="instructions-list">
                     ${item.instructions.map(instruction => `<li>${instruction}</li>`).join('')}
                 </ol>
+                <h4>Preptime</h4>
+                <p class="preptime">
+                    <strong>${item.preptime}</stong>
+                </p>
             </div>`;
         
         div.appendChild(recipeDiv);
@@ -192,21 +199,26 @@ submitBtn.addEventListener("click", () =>{
     // event.preventDefault();
     const recipeTitle = document.querySelector("#title-input").value;
     const recipeDescription = document.querySelector("#recipe-description-input").value;
-    const recipeIngredients = document.querySelector("#ingredients").value;
-    const recipeInstructions = document.querySelector("#instructions").value;
+    const recipeIngredients = document.querySelector("#ingredients").value.split("\n");
+    const recipeInstructions = document.querySelector("#instructions").value.split("\n");
     const recipePreptime = document.querySelector("#prep-time").value;
 
-    console.log(recipeTitle)
-    console.log(recipeDescription)
-    console.log(recipeIngredients)
-    console.log(recipeInstructions)
-    console.log(recipePreptime)
-
+    if(recipeTitle === "" || recipeIngredients === "" || recipeInstructions === "" || recipePreptime === ""){
+         alert("Please complete all fields in the Recipe form:\n\n" +
+                  "• Recipe Title\n" +
+                  "• Ingredients\n" +
+                  "• Instructions\n" +
+                  "• Preparation Time\n\n" +
+                  "All fields are required to add a new recipe.");
+        return
+    } else{
     const newRecipe = {
         title: recipeTitle,
         ingredients: recipeIngredients,
         instructions: recipeInstructions,
     }
-    console.log(newRecipe)
+    recipes.push(newRecipe)
+    displayRecipes(recipes)
+    }
 }) 
 

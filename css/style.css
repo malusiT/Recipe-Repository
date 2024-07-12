@@ -104,12 +104,24 @@ h3{
     padding-bottom: 0;
     margin-bottom: 5px;
 }
-
+h4{
+    font-family: "Merriweather Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+}
 ol li{
     font-family: system-ui,'Segoe UI','Open Sans', 'Helvetica Neue';
 }
 ul li{
     font-family: system-ui, 'Segoe UI','Open Sans', 'Helvetica Neue', sans-serif;
+}
+.preptime{
+    font-family: system-ui,'Segoe UI','Open Sans', 'Helvetica Neue';
+    color: #242323;
+    background: #888;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 5px;
 }
 button{
     border-style: none;
@@ -144,7 +156,7 @@ section #form-id{
 section #form-id label{
     font-weight: 1000;
     font-size: 20px;
-    color: #180803fa;
+    color: #fff;
     padding: 5px;
 }
 #form-id label{
@@ -153,9 +165,9 @@ section #form-id label{
 
 #form-id input{
     line-height: 3em;
-    background-color: #d3cccc;
+    background-color: #fff;
     color: #131212;
-    border: 1px double #fff;
+    border: 1px double #d3cccc;
     border-radius: 5px;
     padding-left: 10px;
     text-align: left;
@@ -165,26 +177,30 @@ section #form-id label{
 }
     
 #form-id textarea{
-    background-color: #d3cccc;
+    background-color: #fff;
     color: #131212;
     font-weight: 700;
-    border: 1px double #fff;
+    border: 1px double #d3cccc;
     border-radius: 5px;
     padding-left: 10px;
     text-align: left;
     font-family: system-ui,'Segoe UI','Open Sans';
     padding: 20px;
+    text-transform: capitalize;
+    
 }
-#form-id input[type='submit']{
+#form-id button{
     font-weight: 700;
 }
-#form-id input[type='submit']:focus{
+#form-id button:focus{
     background-color: #242323;
-    color: #fefefe;
+    color: #fff;
 }
 #add-recipe{
-    padding: 20px;
+    padding: 10px;
     margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #242323;
     text-align: center;
 }
 /* Main content should take up all available space */
@@ -198,7 +214,7 @@ body > .body-container {
 }
 
 footer {
-    background-color: #f1f1f1;
+    background-color: #fff;
     background-image: url("../img/360_F_292203735_CSsyqyS6A4Z9Czd4Msf7qZEhoxjpzZl1.jpg");
     background-repeat: no-repeat;
     background-position: center;
@@ -258,28 +274,36 @@ body {
   
   /* Small devices (landscape phones, 576px and up) */
   @media (min-width: 576px) {
+    header {
+        display: grid;
+        place-items: center;
+    }
     body {
-      font-size: 17px;
+      font-size: 15px;
     }
   }
   
   /* Medium devices (tablets, 768px and up) */
   @media (min-width: 768px) {
+    header {
+        display: grid;
+        place-items: center;
+    }
     body {
-      font-size: 18px;
+      font-size: 16px;
     }
   }
   
   /* Large devices (desktops, 992px and up) */
   @media (min-width: 992px) {
     body {
-      font-size: 19px;
+      font-size: 17px;
     }
   }
   
   /* Extra large devices (large desktops, 1200px and up) */
   @media (min-width: 1200px) {
     body {
-      font-size: 20px;
+      font-size: 18px;
     }
   }
