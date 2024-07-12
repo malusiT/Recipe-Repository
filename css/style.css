@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Gugi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Gugi&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
 header {
     min-width: 100%;
     display: flex;
@@ -11,16 +15,49 @@ header {
     border-bottom-right-radius: 1px;
     border-bottom: double #fff;
 }
+/* For Webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* For Firefox */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: #888 #f1f1f1;
+}
+
+
+/* Ensure the body always has a scrollbar */
+html, body {
+    overflow-y: scroll;
+}
 
 body {
     display: flex;
     flex-direction: column;
+    min-width: 100wv;
     min-height: 100vh;
     margin: 0;
     padding: 0;
     background: #ffffff;
-    overflow-x: hidden;
+    overflow: hidden;
+    -ms-overflow-style: scrollbar;
 }
+header h1, header p, h2, h3 {
+    word-wrap: break-word;
+  }
 header h1{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 40px;
@@ -43,7 +80,9 @@ header p {
 body h2{
     text-align: center;
     text-transform: uppercase;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: "Merriweather Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
     text-decoration-line: underline;
     color: #242323;
 }
@@ -57,10 +96,13 @@ body h2{
     display: none;
 }
 h3{
-    font-family: sans-serif;
+    font-family: "Gugi", sans-serif;
+    font-style: normal;
     color: #242323;
     font-weight: 600;
-    font-size: medium;
+    font-size: 15px;
+    padding-bottom: 0;
+    margin-bottom: 5px;
 }
 
 ol li{
@@ -76,14 +118,15 @@ button{
     background-color: #242323;
     color: #fff;
     border-radius: 2px;
+    font-weight: 700;
 }
 
 button:hover{
-    border-style: double;
-    border-color:  #000;
+    border-style: solid ;
+    border: 1px soild #242323;
     background-color: #fff;
     color:  #242323;
-    font-weight: 700;
+    cursor: pointer;
 }
 
 #add-new-recipes {
@@ -157,12 +200,13 @@ body > .body-container {
 footer {
     background-color: #f1f1f1;
     background-image: url("../img/360_F_292203735_CSsyqyS6A4Z9Czd4Msf7qZEhoxjpzZl1.jpg");
-    background-position: auto 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     text-align: center;
-    padding: 10px 0;
+    padding: 1rem 0;
     width: 100%;
     position: relative;
-    bottom: 1;
 }
 
 /* modal style */
@@ -191,7 +235,7 @@ footer {
 }
 
 .close-btn {
-    color: linear-gradient(to right, #FFD700, #FFA500, #FF8C00, #FF7F50);;
+    color: #000;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -199,23 +243,43 @@ footer {
 
 .close-btn:hover,
 .close-btn:focus {
-    color: #000;
-    text-decoration: none;
+    background: linear-gradient( #FFD700, #e09e0e, #FF8C00, #ad3c13);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
     cursor: pointer;
 }
-@media (max-width: 700px) {
-    header{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+
+   
+/* Extra small devices (phones, less than 576px) */
+/* Base styles for mobile devices */
+body {
+    font-size: 16px;
+  }
+  
+  /* Small devices (landscape phones, 576px and up) */
+  @media (min-width: 576px) {
+    body {
+      font-size: 17px;
     }
-    section{
-        display: grid;
-        place-items: center;
+  }
+  
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) {
+    body {
+      font-size: 18px;
     }
-    .modal-content{
-        margin-top: 5px auto;
-        width: 90%;
+  }
+  
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) {
+    body {
+      font-size: 19px;
     }
-}
+  }
+  
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+    body {
+      font-size: 20px;
+    }
+  }

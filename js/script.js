@@ -176,19 +176,37 @@ div.addEventListener("click", (event) => {
         if (recipeInfoDiv.classList.contains("hidden")) {
             event.target.textContent = "Close Recipe";
             recipeInfoDiv.classList.remove("hidden");
+
         } else {
             event.target.textContent = "Show Recipe";
             recipeInfoDiv.classList.add("hidden");
+            recipeInfoDiv.classList.toggle('expanded');
         }
     }
-    // Implement edit and delete functionality here
+    // Implement edit and delete functionality hereb
 });
 
 const submitBtn = document.querySelector("#add-recipe");
 
-submitBtn.addEventListener("click", (event) =>{
+submitBtn.addEventListener("click", () =>{
     // event.preventDefault();
-    const recipeTitle = document.querySelector("#title-input");
-    console.log(recipeTitle.value);
-})
+    const recipeTitle = document.querySelector("#title-input").value;
+    const recipeDescription = document.querySelector("#recipe-description-input").value;
+    const recipeIngredients = document.querySelector("#ingredients").value;
+    const recipeInstructions = document.querySelector("#instructions").value;
+    const recipePreptime = document.querySelector("#prep-time").value;
+
+    console.log(recipeTitle)
+    console.log(recipeDescription)
+    console.log(recipeIngredients)
+    console.log(recipeInstructions)
+    console.log(recipePreptime)
+
+    const newRecipe = {
+        title: recipeTitle,
+        ingredients: recipeIngredients,
+        instructions: recipeInstructions,
+    }
+    console.log(newRecipe)
+}) 
 
