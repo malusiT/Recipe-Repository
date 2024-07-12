@@ -216,9 +216,13 @@ submitBtn.addEventListener("click", () =>{
         title: recipeTitle,
         ingredients: recipeIngredients,
         instructions: recipeInstructions,
+        preptime: recipePreptime
     }
     recipes.push(newRecipe)
     displayRecipes(recipes)
+    modal.style.display = "none";
+    showBtn.classList.toggle("hidden");
+    addRecipe.classList.toggle("hidden");
     }
 }) 
 
