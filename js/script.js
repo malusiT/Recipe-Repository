@@ -22,6 +22,7 @@ span.onclick = function() {
     modal.style.display = "none";
     showBtn.classList.toggle("hidden");
     addRecipe.classList.toggle("hidden");
+    clearInputs()
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -55,7 +56,7 @@ inputs.forEach(function (input) {
     });
 });
 
-const recipes = [
+const recipes = JSON.parse(localStorage.getItem("recipes")) || [
     {
         title: "Spaghetti Aglio e Olio",
         ingredients: [
@@ -190,10 +191,18 @@ div.addEventListener("click", (event) => {
             recipeInfoDiv.classList.toggle('expanded');
         }
     }
-    // Implement edit and delete functionality hereb
+    // Implement edit and delete functionality here
 });
 
 const submitBtn = document.querySelector("#add-recipe");
+
+function clearInputs(){
+    document.querySelector("#title-input").value = "";
+    document.querySelector("#recipe-description-input").value = "";
+    document.querySelector("#ingredients").value = "";
+    document.querySelector("#instructions").value= "";
+    document.querySelector("#prep-time").value = "";
+}
 
 submitBtn.addEventListener("click", () =>{
     // event.preventDefault();
@@ -204,25 +213,36 @@ submitBtn.addEventListener("click", () =>{
     const recipePreptime = document.querySelector("#prep-time").value;
 
     if(recipeTitle === "" || recipeIngredients === "" || recipeInstructions === "" || recipePreptime === ""){
-         alert("Please complete all fields in the Recipe form:\n\n" +
-                  "• Recipe Title\n" +
-                  "• Ingredients\n" +
-                  "• Instructions\n" +
-                  "• Preparation Time\n\n" +
-                  "All fields are required to add a new recipe.");
-        return
-    } else{
-    const newRecipe = {
-        title: recipeTitle,
-        ingredients: recipeIngredients,
-        instructions: recipeInstructions,
-        preptime: recipePreptime
-    }
-    recipes.push(newRecipe)
-    displayRecipes(recipes)
-    modal.style.display = "none";
-    showBtn.classList.toggle("hidden");
-    addRecipe.classList.toggle("hidden");
-    }
-}) 
+        alert("Please complete all fields in the Recipe form:\n\n" +
+              "• Recipe Title\n" +
+              "• Ingredients\n" +
+              "• Instructions\n" +
+              "• Preparation Time\n\n" +
+              "All fields are required to add a new recipe.");
+        return;
+    } else {
+        const newRecipe = {
+            title: recipeTitle,
+            ingredients: recipeIngredients,
+            instructions: recipeInstructions,
+            preptime: recipePreptime
+        };
+        recipes.push(newRecipe);
+        
+        localStorage.setItem("recipes", JSON.stringify(recipes)); // Save to local storage
+        displayRecipes(recipes); // Update displayed recipes
 
+        clearInputs();
+        modal.style.display = "none";
+        showBtn.classList.toggle("hidden");
+        addRecipe.classList.toggle("hidden");
+    }
+});
+
+// Display recipes from local storage on page load
+document.addEventListener("DOMContentLoaded", () => {
+    const storedRecipes = JSON.parse(localStorage.getItem("recipes"));
+    if (storedRecipes) {
+        displayRecipes(storedRecipes);
+    }
+});
