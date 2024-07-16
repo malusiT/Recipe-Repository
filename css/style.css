@@ -91,6 +91,20 @@ body h2{
     padding: 20px;
     margin: 10px
 }
+.recipe-info{
+    animation-name: recipeload;
+    animation-duration: 2s;
+}
+@keyframes recipeload{
+    from{
+        top:-100px;
+        opacity: 0;
+    }
+    to{
+        top :0;
+        opacity: 1;
+    }
+}
 
 .hidden {
     display: none;
@@ -113,9 +127,6 @@ ol li, ul li{
     font-family: system-ui,'Segoe UI','Open Sans', 'Helvetica Neue';
     text-transform: capitalize;
 }
-/* ul li{
-    font-family: system-ui, 'Segoe UI','Open Sans', 'Helvetica Neue', sans-serif;
-} */
 .preptime{
     font-family: system-ui,'Segoe UI','Open Sans', 'Helvetica Neue';
     color: #242323;
@@ -216,14 +227,18 @@ body > .body-container {
 
 footer {
     background-color: #fff;
-    background-image: url("../img/360_F_292203735_CSsyqyS6A4Z9Czd4Msf7qZEhoxjpzZl1.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    text-align: center;
+    color: #000;
+    text-align: left;
     padding: 1rem 0;
     width: 100%;
+    height: max-content;
+    position: sticky;
+    top: 90%;
+}
+footer p{
+    overflow: hidden;
     position: relative;
+    padding-left: 20px;
 }
 
 /* modal style */
@@ -239,6 +254,9 @@ footer {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 
+    animation-name: animatemodal;
+    animation-duration: 2s;
+
 .modal-content {
     border-radius: 8px;
     background-color: #fefefe;
@@ -247,7 +265,7 @@ footer {
     border: 1px solid #888;
     width: 50%; /* Could be more or less, depending on screen size */
     background: url("../img/StockCake-Dewy\ Mango\ Portrait_1720701236.jpg") center center no-repeat, #ffffff; /* Fallback to white if image fails to load */
-    background-position: 100%,100%
+    background-position: 100%,100%;
 }
 }
 
@@ -256,6 +274,18 @@ footer {
     float: right;
     font-size: 28px;
     font-weight: bold;
+}
+.close-btn:active{
+    animation-name: closebutton;
+    animation-duration: 2s;
+}
+@keyframes closebutton{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
 }
 
 .close-btn:hover,
@@ -266,6 +296,63 @@ footer {
     cursor: pointer;
 }
 
+/* delete Modal  */
+.delete-modal{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0,0,0,0.2); /* Black w/ opacity */
+
+    animation-name: deletemodal;
+    animation-duration: 1s;
+
+    .delete-modal-content{
+        border-radius: 8px;
+        background-color: #fefefe;
+        margin: 1% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 25%; /* Could be more or less, depending on screen size */
+    }
+}
+
+@keyframes deletemodal{
+    from{ 
+        top: -50px;
+        opacity:0;
+    } 
+    to {
+        top :0;
+        opacity: 1;
+    }
+}
+
+@keyframes animatemodal{
+    from {
+        top: 0%;
+        opacity: 0;
+    }
+    to {
+        top: 0%;
+        opacity: 1;
+    }
+}
+
+
+.delete-confirm{
+    font-family: sans-serif,serif;
+    text-align: center;
+    padding-bottom: 5px;
+}
+#confirm-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
    
 /* Extra small devices (phones, less than 576px) */
 /* Base styles for mobile devices */
