@@ -15,6 +15,9 @@ const btn = document.getElementById("openModalBtn");
 // Get the <span> element that closes the modal
 const span = document.getElementById("closeModalBtn");
 
+// Get Delete Modal class
+const deleteModal = document.querySelector(".delete-modal");
+
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
     modal.style.display = "block";
@@ -48,8 +51,6 @@ addRecipe.addEventListener("click", () => {
     }
 });
 
-// Get Delete Modal class
-const deleteModal = document.querySelector(".delete-modal");
 
 // Prevent Default Input Behavior When Pressing Enter
 const inputs = document.querySelectorAll("#form-id input[type='text']");
@@ -216,7 +217,82 @@ div.addEventListener("click", (event) => {
         declined.onclick = function() {
             deleteModal.style.display = "none";
         };
+    }
+
+    // Edit Functionality 
+
+    if(event.target.classList.contains("edit-button")){
+        const recipeContainer = document.getElementById("recipes-container"); // Get Recipe Container 
         
+        const editSection = document.createElement("section"); //Creating new Edit section
+        editSection.id = "edit-section"
+        editSection.innerHTML = `
+            <div id="edit-modal" class="edit-modal">
+                <div class="modal-content">
+                <span class="close-btn" id="newCloseModalBtn">&times;</span>
+                <div class="recipe-form hidden" id="form-id">
+                    <label>Title</label>
+                    <input type="text" id="new-title-input" value="${recipes[index].title}"><br>
+                    <label>Description</label>
+                    <input type="text" id="new-recipe-description-input" value="${recipes[index].description}"><br>
+                    <label>Ingredients</label>
+                    <textarea name="ingredients-list" id="new-ingredients" cols="30" rows="10">${recipes[index].ingredients.map((ingredient) => `${ingredient}`).join("\n")}</textarea>
+                    <label>Instructions</label>
+                    <textarea name="recipe-instruction" id="new-instructions" width="1000px" cols="100" height="500px" rows="20">${recipes[index].instructions.map((instruction) => `${instruction}` ).join("\n")}</textarea><br>
+                    <label>Preptime</label>
+                    <input type="text" id="new-prep-time" name="prep-time" value="${recipes[index].preptime}"><br>
+                    <div id="error-message" class="error-message" style="color:red"></div>
+                    <button id="change-recipe">Change Recipe</button>
+                </div>
+            </div>`
+
+        recipeContainer.append(editSection);
+
+        const editModal = document.querySelector(".edit-modal"); // Get Edit Modal class
+        editModal.style.display = "block"; // Reveil Modal
+
+        const newSpan = document.getElementById("newCloseModalBtn");//Get edit span class
+        
+        // Close Edit Modal
+        newSpan.onclick = function() {
+            editModal.style.display = "none";
+            clearInputs()
+        }
+
+        window.onclick = function(event){
+            if (event.target == editModal) {
+                editModal.style.display = "none";
+                clearInputs()
+            }
+        }
+
+        //Edit Modal Function
+        const changeBtn = document.getElementById("change-recipe")
+        changeBtn.onclick = function(){
+            recipes.splice(index, 1)
+
+            const newRecipeTitle = document.querySelector("#new-title-input").value;
+            const newRecipeDescription = document.querySelector("#new-recipe-description-input").value;
+            const newRecipeIngredients = document.querySelector("#new-ingredients").value.split("\n");
+            const newRecipeInstructions = document.querySelector("#new-instructions").value.split("\n");
+            const newRecipePreptime = document.querySelector("#new-prep-time").value;
+           
+            const newRecipe = {
+                title: newRecipeTitle,
+                ingredients: newRecipeIngredients,
+                instructions: newRecipeInstructions,
+                preptime: newRecipePreptime
+            };
+            recipes.push(newRecipe);
+            
+            localStorage.setItem("recipes", JSON.stringify(recipes)); // Save to local storage
+            displayRecipes(recipes); // Update displayed recipes
+
+            clearInputs();
+
+            editModal.style.display = "none";
+
+        }
     }
 });
 
@@ -230,40 +306,41 @@ function clearInputs(){
     document.querySelector("#prep-time").value = "";
 }
 
-submitBtn.addEventListener("click", () =>{
-    // event.preventDefault();
-    const recipeTitle = document.querySelector("#title-input").value;
-    const recipeDescription = document.querySelector("#recipe-description-input").value;
-    const recipeIngredients = document.querySelector("#ingredients").value.split("\n");
-    const recipeInstructions = document.querySelector("#instructions").value.split("\n");
-    const recipePreptime = document.querySelector("#prep-time").value;
+submitBtn.addEventListener("click", submitRecipe)
 
-    if(recipeTitle === "" || recipeIngredients === "" || recipeInstructions === "" || recipePreptime === ""){
-        alert("Please complete all fields in the Recipe form:\n\n" +
-              "• Recipe Title\n" +
-              "• Ingredients\n" +
-              "• Instructions\n" +
-              "• Preparation Time\n\n" +
-              "All fields are required to add a new recipe.");
-        return;
-    } else {
-        const newRecipe = {
-            title: recipeTitle,
-            ingredients: recipeIngredients,
-            instructions: recipeInstructions,
-            preptime: recipePreptime
-        };
-        recipes.push(newRecipe);
-        
-        localStorage.setItem("recipes", JSON.stringify(recipes)); // Save to local storage
-        displayRecipes(recipes); // Update displayed recipes
+    function submitRecipe(){
+        const recipeTitle = document.querySelector("#title-input").value;
+        const recipeDescription = document.querySelector("#recipe-description-input").value;
+        const recipeIngredients = document.querySelector("#ingredients").value.split("\n");
+        const recipeInstructions = document.querySelector("#instructions").value.split("\n");
+        const recipePreptime = document.querySelector("#prep-time").value;
 
-        clearInputs();
-        modal.style.display = "none";
-        showBtn.classList.toggle("hidden");
-        addRecipe.classList.toggle("hidden");
-    }
-});
+        if(recipeTitle === "" || recipeIngredients === "" || recipeInstructions === "" || recipePreptime === ""){
+            alert("Please complete all fields in the Recipe form:\n\n" +
+                "• Recipe Title\n" +
+                "• Ingredients\n" +
+                "• Instructions\n" +
+                "• Preparation Time\n\n" +
+                "All fields are required to add a new recipe.");
+            return;
+        } else {
+            const newRecipe = {
+                title: recipeTitle,
+                ingredients: recipeIngredients,
+                instructions: recipeInstructions,
+                preptime: recipePreptime
+            };
+            recipes.push(newRecipe);
+            
+            localStorage.setItem("recipes", JSON.stringify(recipes)); // Save to local storage
+            displayRecipes(recipes); // Update displayed recipes
+
+            clearInputs();
+            modal.style.display = "none";
+            showBtn.classList.toggle("hidden");
+            addRecipe.classList.toggle("hidden");
+        }
+    };
 
 // Display recipes from local storage on page load
 document.addEventListener("DOMContentLoaded", () => {
