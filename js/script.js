@@ -6,6 +6,8 @@ const div = document.getElementById("recipe-display"); // Recipe Display Div
 const confirmed = document.getElementById("confirm")
 const declined = document.getElementById("decline")
 
+
+localStorage.clear()
 // Get the modal
 const modal = document.getElementById("modal");
 
@@ -184,28 +186,23 @@ const displayRecipes = (recipes) => {
 displayRecipes(recipes);
 
 // Event Delegation for Show, Edit, and Delete Buttons
-div.addEventListener("click", (event) => {
+div.addEventListener("click", (event) => { 
     const index = event.target.dataset.index;
     const recipeInfoDiv = document.getElementById(`recipe-info-${index}`);
 
     // Show button Functionality
     if (event.target.classList.contains("show-button")) {
-
         if (recipeInfoDiv.classList.contains("hidden")) {
             event.target.textContent = "Close Recipe";
             recipeInfoDiv.classList.remove("hidden");
-
         } else {
             event.target.textContent = "Show Recipe";
             recipeInfoDiv.classList.add("hidden");
-            recipeInfoDiv.classList.toggle('expanded');
         }
     }
 
-    // Implement edit and delete functionality here
-    
-    if(event.target.classList.contains("delete-button")){
-
+    // Delete Functionality
+    if (event.target.classList.contains("delete-button")) {
         deleteModal.style.display = "block";
         confirmed.onclick = function() {
             deleteModal.style.display = "none";
@@ -220,12 +217,11 @@ div.addEventListener("click", (event) => {
     }
 
     // Edit Functionality 
-
-    if(event.target.classList.contains("edit-button")){
+    if (event.target.classList.contains("edit-button")) {
         const recipeContainer = document.getElementById("recipes-container"); // Get Recipe Container 
-        
+
         const editSection = document.createElement("section"); //Creating new Edit section
-        editSection.id = "edit-section"
+        editSection.id = "edit-section";
         editSection.innerHTML = `
             <div id="edit-modal" class="edit-modal">
                 <div class="modal-content">
@@ -243,58 +239,64 @@ div.addEventListener("click", (event) => {
                     <input type="text" id="new-prep-time" name="prep-time" value="${recipes[index].preptime}"><br>
                     <div id="error-message" class="error-message" style="color:red"></div>
                     <button id="change-recipe">Change Recipe</button>
-                </div>
-            </div>`
+                </div>`;
 
         recipeContainer.append(editSection);
 
         const editModal = document.querySelector(".edit-modal"); // Get Edit Modal class
-        editModal.style.display = "block"; // Reveil Modal
+        editModal.style.display = "block"; // Reveal Modal
 
-        const newSpan = document.getElementById("newCloseModalBtn");//Get edit span class
-        
+        const newSpan = document.getElementById("newCloseModalBtn"); // Get edit span class
+
         // Close Edit Modal
         newSpan.onclick = function() {
             editModal.style.display = "none";
-            clearInputs()
-        }
+            document.getElementById("edit-section").remove();
+        };
 
         window.onclick = function(event){
             if (event.target == editModal) {
                 editModal.style.display = "none";
-                clearInputs()
+                document.getElementById("edit-section").remove();
             }
-        }
+        };
 
-        //Edit Modal Function
-        const changeBtn = document.getElementById("change-recipe")
-        changeBtn.onclick = function(){
-            recipes.splice(index, 1)
-
+        // Edit Modal Function
+        const changeBtn = document.getElementById("change-recipe");
+        changeBtn.onclick = function() {
             const newRecipeTitle = document.querySelector("#new-title-input").value;
             const newRecipeDescription = document.querySelector("#new-recipe-description-input").value;
             const newRecipeIngredients = document.querySelector("#new-ingredients").value.split("\n");
             const newRecipeInstructions = document.querySelector("#new-instructions").value.split("\n");
             const newRecipePreptime = document.querySelector("#new-prep-time").value;
-           
+
+            if (newRecipeTitle === "" || newRecipeIngredients.length === 0 || newRecipeInstructions.length === 0 || newRecipePreptime === "") {
+                alert("Please complete all fields in the Recipe form:\n\n" +
+                    "• Recipe Title\n" +
+                    "• Ingredients\n" +
+                    "• Instructions\n" +
+                    "• Preparation Time\n\n" +
+                    "All fields are required to add a new recipe.");
+                return;
+            }
+
             const newRecipe = {
                 title: newRecipeTitle,
                 ingredients: newRecipeIngredients,
                 instructions: newRecipeInstructions,
                 preptime: newRecipePreptime
             };
-            recipes.push(newRecipe);
-            
+
+            recipes[index] = newRecipe; // Update the recipe at the correct index
             localStorage.setItem("recipes", JSON.stringify(recipes)); // Save to local storage
             displayRecipes(recipes); // Update displayed recipes
 
-            clearInputs();
-
+            document.getElementById("edit-section").remove();
             editModal.style.display = "none";
-
-        }
+        };
     }
 });
+
 
 const submitBtn = document.querySelector("#add-recipe");
 

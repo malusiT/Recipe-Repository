@@ -14,6 +14,7 @@ header {
     border-bottom-left-radius: 1px;
     border-bottom-right-radius: 1px;
     border-bottom: double #fff;
+    max-height: 200px;
 }
 /* For Webkit browsers (Chrome, Safari) */
 ::-webkit-scrollbar {
@@ -264,7 +265,7 @@ footer p{
     margin: 1% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 50%; /* Could be more or less, depending on screen size */
+    width: 70%; /* Could be more or less, depending on screen size */
     background: url("../img/StockCake-Dewy\ Mango\ Portrait_1720701236.jpg") center center no-repeat, #ffffff; /* Fallback to white if image fails to load */
     background-position: 100%,100%;
 }
@@ -317,7 +318,7 @@ footer p{
         margin: 1% auto; /* 15% from the top and centered */
         padding: 20px;
         border: 1px solid #888;
-        width: 25%; /* Could be more or less, depending on screen size */
+        width: 33%; /* Could be more or less, depending on screen size */
     }
 }
 
@@ -375,6 +376,17 @@ body {
     body {
       font-size: 15px;
     }
+    .edit-modal, .modal{
+        .modal-content{
+            width: 70%;
+        }
+    }
+    .delete-modal{
+        .delete-modal-content {
+            width: 30%;
+        }
+    }
+    
   }
   
   /* Medium devices (tablets, 768px and up) */
@@ -386,6 +398,16 @@ body {
     body {
       font-size: 16px;
     }
+    .edit-modal, .modal{
+        .modal-content{
+            width: 75%;
+        }
+    }
+    .delete-modal{
+        .delete-modal-content {
+            width: 30%;
+        }
+    }
   }
   
   /* Large devices (desktops, 992px and up) */
@@ -393,11 +415,28 @@ body {
     body {
       font-size: 17px;
     }
+
+    .edit-modal, .modal{
+        .modal-content{
+            background: url("../img/StockCake-Dewy\ Mango\ Portrait_1720701236.jpg") center center/cover no-repeat, #ffffff; /* Fallback to white if image fails to load */
+            width: 70%;
+        }
+    }
+    .delete-modal{
+        .delete-modal-content {
+            width: 25%;
+        }
+    }
   }
   
   /* Extra large devices (large desktops, 1200px and up) */
   @media (min-width: 1200px) {
     body {
       font-size: 18px;
+    }
+    .delete-modal{
+        .delete-modal-content {
+            width: 25%;
+        }
     }
   }
