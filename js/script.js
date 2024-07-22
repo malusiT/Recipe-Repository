@@ -7,7 +7,7 @@ const confirmed = document.getElementById("confirm")
 const declined = document.getElementById("decline")
 
 
-localStorage.clear()
+
 // Get the modal
 const modal = document.getElementById("modal");
 
