@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preload" as="image" href="../images/StockCake-Organized%20Refrigerator%20Contents_1720699601.jpg">
+    <title>Recipe Repository</title>
+</head>
+
+<body class="body-container">
+    <header style="background: url(../images/StockCake-Organized%20Refrigerator%20Contents_1720699601.jpg) center center no-repeat, #ffffff;">
+        <h1 id="title">Recipe Repository</h1>
+        <p id="tagline"><span>Where Your Recipes Find a Home</span></p>
+    </header>
+    <div id="recipes-container" class="recipes-container">
+        <section class="recipe-list" id="my-recipes-container">
+            <h2>My Recipes</h2>
+                <div data-list="1" class="recipe" id="recipe-display"> 
+                    <!-- RECIPES IN SCRIPT ARRAY -->
+                </div>
+        </section>
+        
+        <div id="delete-modal-id" class="delete-modal">
+                <div class="delete-modal-content">
+                    <div class="delete-confirm">Are you sure you want to delete this recipe</div>
+                        <div id="confirm-buttons">
+                            <button id="confirm">Yes</button>
+                            <button id="decline">No</button>
+                        </div>
+                </div>
+        </div>
+
+        <section id="add-new-recipes">
+            <button id="openModalBtn" style="margin: 20px;">Add new Recipe</button>
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" id="closeModalBtn">&times;</span>
+                    <div class="recipe-form hidden" id="form-id">
+                        <label>Title</label>
+                        <input type="text" id="title-input" placeholder="Recipe Name" required><br>
+                        <label>Description</label>
+                        <input type="text" id="recipe-description-input" placeholder="Recipe description" required><br>
+                        <label>Ingredients</label>
+                        <textarea name="ingredients-list" id="ingredients" cols="30" rows="10" placeholder="List of Ingredients [reminder to include measurements]" required></textarea>
+                        <label>Instructions</label>
+                        <textarea name="recipe-instruction" id="instructions"  cols="100" rows="20" required></textarea><br>
+                        <label>Preptime</label>
+                        <input type="text" id="prep-time" name="prep-time" placeholder="e.g. 1 hour 30 minutes" required><br>
+                        <div id="error-message" class="error-message" style="color:red"></div>
+                        <button id="add-recipe">Add new Recipe</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+            
+        
+    </div> 
+    <footer>
+        <p>&copy; 2024 Recipe Repository. All rights reserved.</p>
+    </footer>
+    <script src="../scripts/script.js"></script> <!--  for toggling the buttons -->
+</body>
+</html>

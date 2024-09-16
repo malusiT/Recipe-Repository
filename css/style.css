@@ -266,7 +266,7 @@ footer p{
     padding: 20px;
     border: 1px solid #888;
     width: 70%; /* Could be more or less, depending on screen size */
-    background: url("../img/StockCake-Dewy\ Mango\ Portrait_1720701236.jpg") center center no-repeat, #ffffff; /* Fallback to white if image fails to load */
+    background: url("../images/Mango.jpg") center center no-repeat, #ffffff; /* Fallback to white if image fails to load */
     background-position: 100%,100%;
 }
 }

@@ -74,10 +74,16 @@
         transform: scale(1);
     }
     50% {
-        transform: scale(1.2);
+        transform: scale(1.01);
         width: 310px;
     }
 }
+.loading-message {
+        display: none;
+        text-align: center;
+        font-size: 1.2em;
+        margin-top: 20px;
+    }
 
     </style>
 </head>
@@ -110,6 +116,10 @@
 
     <script>
         document.querySelector("#explore-recipes").addEventListener("click", () =>{
+            const loadingMessage = document.createElement("div");
+            loadingMessage.classList.add("loading-message");
+            loadingMessage.textContent = "Redirecting...";
+            document.body.appendChild(loadingMessage);
             setTimeout(()=>{
                 window.location.href = "/app/recipes.html"
             },500)
