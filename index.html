@@ -12,7 +12,7 @@
         max-width: 100%;
         font-family: Arial, Helvetica, sans-serif;
         padding: 20px;
-        
+        overflow: hidden;
     }
     #header{
         color: #fff;
@@ -51,6 +51,7 @@
     background-color: transparent;
     mix-blend-mode: multiply; /* Blends the image with the background */
     transition: transform 0.5s ease;
+    overflow: hidden;
 }
 
 .left-image:hover {
@@ -63,7 +64,8 @@
     right: 0;
     border-radius: 100px 0 0 100px;
     background-color: transparent;
-    mix-blend-mode: multiply; /* Blends the image with the background */
+    mix-blend-mode: multiply; /* Blends the image with the background */;
+    overflow: hidden;
 }
 
 .right-image:hover {
@@ -76,7 +78,7 @@
         transform: scale(1);
     }
     50% {
-        transform: scale(1.1);
+        transform: scale(1.05);
     }
 }
 .loading-message {
@@ -117,19 +119,8 @@
 
     <script>
         document.querySelector("#explore-recipes").addEventListener("click", () =>{
-            const loadingMessage = document.createElement("div");
-            loadingMessage.classList.add("loading-message");
-            loadingMessage.textContent = "Redirecting...";
-            document.body.appendChild(loadingMessage);
-            setTimeout(()=>{
-<<<<<<< HEAD
                 window.location.href = "./app/recipes.html"
-            },1000)
-=======
-                window.location.href = "../app/recipes.html"
-            },500)
->>>>>>> e27a74746022f1fba5d7de1bb1cb0a93a3632451
-        })
+            })
     </script>
 </body>
 </html>
