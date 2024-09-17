@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Recipe Repository</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <style>
     #container{
        
@@ -55,6 +55,7 @@
 
 .left-image:hover {
     animation: growShrink 2s infinite;
+    overflow: hidden;
 }
 
 .right-image {
@@ -67,6 +68,7 @@
 
 .right-image:hover {
     animation: growShrink 2s infinite;
+    overflow: hidden;
 }
 
 @keyframes growShrink {
@@ -74,8 +76,7 @@
         transform: scale(1);
     }
     50% {
-        transform: scale(1.01);
-        width: 310px;
+        transform: scale(1.1);
     }
 }
 .loading-message {
@@ -104,8 +105,8 @@
                     <!-- <button id="new-recipes" class="click-btn">Add New Recipe</button> -->
                 </div>
                 <div>
-                    <img src="/images/jib1.jpg" alt="Left Image" class="side-image left-image">
-                    <img src="/images/jib2.jpg" alt="Right Image" class="side-image right-image">
+                    <img src="./images/jib1.jpg" alt="Left Image" class="side-image left-image">
+                    <img src="./images/jib2.jpg" alt="Right Image" class="side-image right-image">
                 </div>
         </div>
     </div>
@@ -121,8 +122,8 @@
             loadingMessage.textContent = "Redirecting...";
             document.body.appendChild(loadingMessage);
             setTimeout(()=>{
-                window.location.href = "/app/recipes.html"
-            },500)
+                window.location.href = "./app/recipes.html"
+            },1000)
         })
     </script>
 </body>
