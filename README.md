@@ -2,6 +2,8 @@
 
 Welcome to Recipe Repository, a web application for storing, managing and sharing your personal favorite recipes.
 
+https://malusit.github.io/Recipe-Repository/
+
 ## Features
 
 - **View Recipes**: Scroll through existing recipes and expand each to view full details.
